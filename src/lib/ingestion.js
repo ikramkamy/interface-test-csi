@@ -81,6 +81,34 @@ async function sha256(value) {
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')
 }
 
+export function acceptedSheetNames(flowMapping) {
+  return [flowMapping.sheet_name, ...(flowMapping.sheet_aliases ?? [])]
+}
+
+function columnsByKey(flowMapping) {
+  const mappingByKey = new Map()
+  for (const column of flowMapping.columns) {
+    mappingByKey.set(column.normalized_key, column)
+    for (const alias of column.aliases ?? []) mappingByKey.set(alias, column)
+  }
+  return mappingByKey
+}
+
+// Plusieurs flux peuvent partager un nom de feuille (ex. « Datos ») : on départage par les en-têtes reconnus.
+export function detectFlow(workbook, mapping, fallbackFlow) {
+  let best = null
+  for (const [flow, flowMapping] of Object.entries(mapping.flows ?? {})) {
+    const mappingByKey = columnsByKey(flowMapping)
+    for (const sheetName of acceptedSheetNames(flowMapping)) {
+      const worksheet = workbook.find((sheet) => sheet.sheet === sheetName)
+      if (!worksheet) continue
+      const score = (worksheet.data[0] ?? []).filter((header) => mappingByKey.has(normalizeHeader(header))).length
+      if (!best || score > best.score) best = { flow, sheetName, score }
+    }
+  }
+  return best ?? { flow: fallbackFlow, sheetName: workbook[0]?.sheet }
+}
+
 export async function prepareIngestion(payload, mapping, now = new Date()) {
   const flow = String(payload.activity ?? '').toUpperCase()
   const flowMapping = mapping.flows?.[flow]
@@ -88,13 +116,10 @@ export async function prepareIngestion(payload, mapping, now = new Date()) {
   if (!payload.file?.name || !payload.file?.sha256 || !payload.file?.sheetName) throw new Error('Métadonnées du fichier incomplètes.')
   if (!Array.isArray(payload.headers) || !Array.isArray(payload.rows) || payload.rows.length === 0) throw new Error('Le fichier ne contient aucune ligne exploitable.')
   if (payload.headers.length !== flowMapping.expected_column_count) throw new Error(`${flowMapping.expected_column_count} colonnes attendues, ${payload.headers.length} reçues.`)
-  if (payload.file.sheetName !== flowMapping.sheet_name) throw new Error(`La feuille attendue pour ${flow} est « ${flowMapping.sheet_name} ».`)
+  const sheetNames = acceptedSheetNames(flowMapping)
+  if (!sheetNames.includes(payload.file.sheetName)) throw new Error(`La feuille attendue pour ${flow} est « ${sheetNames.join(' » ou « ')} ».`)
 
-  const mappingByKey = new Map()
-  for (const column of flowMapping.columns) {
-    mappingByKey.set(column.normalized_key, column)
-    for (const alias of column.aliases ?? []) mappingByKey.set(alias, column)
-  }
+  const mappingByKey = columnsByKey(flowMapping)
   const keys = payload.columns?.length === payload.headers.length ? payload.columns.map((column) => column.key) : sourceKeys(payload.headers)
   const resolved = payload.headers.map((header, index) => {
     const normalizedKey = normalizeHeader(header)

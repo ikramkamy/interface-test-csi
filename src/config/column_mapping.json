@@ -1,6 +1,6 @@
 {
-  "mapping_version": "1.0.0",
-  "effective_from": "2026-07-29",
+  "mapping_version": "1.1.0",
+  "effective_from": "2026-09-23",
   "target_table": "public.chargements",
   "description": "Correspondance entre les en-tetes des fichiers Excel client (espagnol / portugais) et les colonnes anglaises de public.chargements. La resolution se fait sur `normalized_key`, jamais sur `source_header` brut.",
   "header_normalization": {
@@ -57,6 +57,9 @@
         "required_normalized_keys": [
           "market",
           "motorizacion"
+        ],
+        "sheet_aliases": [
+          "Datos"
         ]
       },
       "columns": [
@@ -69,7 +72,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "mercado"
+          ]
         },
         {
           "position": 1,
@@ -80,7 +86,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "codigo_concesionario"
+          ]
         },
         {
           "position": 2,
@@ -91,7 +100,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "concesionario"
+          ]
         },
         {
           "position": 3,
@@ -102,7 +114,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "ubicacion"
+          ]
         },
         {
           "position": 4,
@@ -124,7 +139,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "codigo_mvscpos"
+          ]
         },
         {
           "position": 6,
@@ -135,7 +153,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "matricula"
+          ]
         },
         {
           "position": 7,
@@ -146,7 +167,10 @@
           "target_type": "integer",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "kilometraje"
+          ]
         },
         {
           "position": 8,
@@ -157,7 +181,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "marca"
+          ]
         },
         {
           "position": 9,
@@ -168,7 +195,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "modelo"
+          ]
         },
         {
           "position": 10,
@@ -179,7 +209,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "canal_de_ventas"
+          ]
         },
         {
           "position": 11,
@@ -190,7 +223,10 @@
           "target_type": "date",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "fecha_de_venta"
+          ]
         },
         {
           "position": 12,
@@ -201,7 +237,10 @@
           "target_type": "date",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "fecha_de_entrega"
+          ]
         },
         {
           "position": 13,
@@ -212,7 +251,10 @@
           "target_type": "date",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "fecha_de_inicio_de_garantia"
+          ]
         },
         {
           "position": 14,
@@ -223,7 +265,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "numero_de_orden_de_reparacion"
+          ]
         },
         {
           "position": 15,
@@ -234,7 +279,10 @@
           "target_type": "date",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "fecha_de_ingreso"
+          ]
         },
         {
           "position": 16,
@@ -245,7 +293,10 @@
           "target_type": "date",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "fecha_de_salida"
+          ]
         },
         {
           "position": 17,
@@ -256,7 +307,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "tipo_de_intervencion"
+          ]
         },
         {
           "position": 18,
@@ -267,7 +321,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "subtipo_de_intervencion"
+          ]
         },
         {
           "position": 19,
@@ -278,7 +335,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "tipo_de_contacto"
+          ]
         },
         {
           "position": 20,
@@ -289,7 +349,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "tipo_de_documento"
+          ]
         },
         {
           "position": 21,
@@ -300,7 +363,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "numero_de_documento"
+          ]
         },
         {
           "position": 22,
@@ -311,7 +377,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "nombre_apellido_del_cliente"
+          ]
         },
         {
           "position": 23,
@@ -322,7 +391,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "contacto"
+          ]
         },
         {
           "position": 24,
@@ -333,7 +405,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "direccion"
+          ]
         },
         {
           "position": 25,
@@ -344,7 +419,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "rut_rol_nit_del_cliente_dni"
+          ]
         },
         {
           "position": 26,
@@ -355,7 +433,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "ciudad"
+          ]
         },
         {
           "position": 27,
@@ -366,7 +447,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "region"
+          ]
         },
         {
           "position": 28,
@@ -377,7 +461,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "pais"
+          ]
         },
         {
           "position": 29,
@@ -388,7 +475,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "telefono_fijo"
+          ]
         },
         {
           "position": 30,
@@ -399,7 +489,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "celular"
+          ]
         },
         {
           "position": 31,
@@ -410,7 +503,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "email_del_cliente"
+          ]
         },
         {
           "position": 32,
@@ -421,7 +517,10 @@
           "target_type": "date",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "fecha_de_extraccion"
+          ]
         },
         {
           "position": 33,
@@ -432,7 +531,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "codigo_del_recepcionista"
+          ]
         },
         {
           "position": 34,
@@ -443,7 +545,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "nombre_del_recepcionista"
+          ]
         },
         {
           "position": 35,
@@ -454,7 +559,10 @@
           "target_type": "date",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "fecha_de_carga_de_la_intervencion"
+          ]
         },
         {
           "position": 36,
@@ -467,6 +575,12 @@
           "pii": false,
           "empty_in_reference_sample": true
         }
+      ],
+      "sheet_aliases": [
+        "Datos"
+      ],
+      "alias_source_files": [
+        "URU_PV_SEVEL_2026-09-23.XLSX"
       ]
     },
     "VN": {
@@ -480,6 +594,9 @@
         "required_normalized_keys": [
           "codigo_vin",
           "motorizacao"
+        ],
+        "sheet_aliases": [
+          "Datos"
         ]
       },
       "columns": [
@@ -492,7 +609,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "vin"
+          ]
         },
         {
           "position": 1,
@@ -514,7 +634,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "codigo_producto"
+          ]
         },
         {
           "position": 3,
@@ -525,7 +648,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "modelo"
+          ]
         },
         {
           "position": 4,
@@ -547,7 +673,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "color"
+          ]
         },
         {
           "position": 6,
@@ -558,7 +687,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "opciones"
+          ]
         },
         {
           "position": 7,
@@ -569,7 +701,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "venta_numero"
+          ]
         },
         {
           "position": 8,
@@ -591,7 +726,10 @@
           "target_type": "date",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "fecha_de_venta"
+          ]
         },
         {
           "position": 10,
@@ -613,7 +751,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "nombre_del_concesionario"
+          ]
         },
         {
           "position": 12,
@@ -624,7 +765,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "codigo_de_mercado_del_concesionario"
+          ]
         },
         {
           "position": 13,
@@ -635,7 +779,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "nombre_de_mercado_del_concesionario"
+          ]
         },
         {
           "position": 14,
@@ -646,7 +793,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "nombre_del_comprador"
+          ]
         },
         {
           "position": 15,
@@ -657,7 +807,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "e_mail_del_comprador"
+          ]
         },
         {
           "position": 16,
@@ -668,7 +821,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "domicilio_del_comprador"
+          ]
         },
         {
           "position": 17,
@@ -679,7 +835,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "numero_en_la_calle"
+          ]
         },
         {
           "position": 18,
@@ -692,7 +851,8 @@
           "pii": true,
           "empty_in_reference_sample": true,
           "aliases": [
-            "complemento_do_enderea_o_do_comprador"
+            "complemento_do_enderea_o_do_comprador",
+            "datos_adicionales_del_domicilio_del_comprador"
           ]
         },
         {
@@ -704,7 +864,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "barrio_del_comprador"
+          ]
         },
         {
           "position": 20,
@@ -715,7 +878,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "ciudad_del_comprador"
+          ]
         },
         {
           "position": 21,
@@ -726,7 +892,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "estado_del_comprador"
+          ]
         },
         {
           "position": 22,
@@ -737,7 +906,10 @@
           "target_type": "text",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "codigo_de_mercado_del_comprador"
+          ]
         },
         {
           "position": 23,
@@ -748,7 +920,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "nombre_de_mercado_del_comprador"
+          ]
         },
         {
           "position": 24,
@@ -759,7 +934,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "rut_rol_nit_del_cliente_dni"
+          ]
         },
         {
           "position": 25,
@@ -770,7 +948,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "telefono_del_comprador"
+          ]
         },
         {
           "position": 26,
@@ -781,7 +962,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "celular_del_comprador"
+          ]
         },
         {
           "position": 27,
@@ -792,7 +976,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "persona_juridica_persona_fisica_pj_pf"
+          ]
         },
         {
           "position": 28,
@@ -803,7 +990,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "canal_de_venta"
+          ]
         },
         {
           "position": 29,
@@ -814,7 +1004,10 @@
           "target_type": "date",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "fecha_de_venta_al_concesionario"
+          ]
         },
         {
           "position": 30,
@@ -836,7 +1029,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": true,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "numero_de_matricula_o_registro_dominio"
+          ]
         },
         {
           "position": 32,
@@ -847,7 +1043,10 @@
           "target_type": "date",
           "shared_with_other_flow": false,
           "pii": false,
-          "empty_in_reference_sample": true
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "fecha_de_matricula"
+          ]
         },
         {
           "position": 33,
@@ -858,7 +1057,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "codigo_del_vendedor"
+          ]
         },
         {
           "position": 34,
@@ -869,7 +1071,10 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "nombre_del_vendedor"
+          ]
         },
         {
           "position": 35,
@@ -880,7 +1085,10 @@
           "target_type": "date",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "fecha_de_entrega"
+          ]
         },
         {
           "position": 36,
@@ -891,8 +1099,17 @@
           "target_type": "text",
           "shared_with_other_flow": true,
           "pii": false,
-          "empty_in_reference_sample": false
+          "empty_in_reference_sample": false,
+          "aliases": [
+            "motorizacion"
+          ]
         }
+      ],
+      "sheet_aliases": [
+        "Datos"
+      ],
+      "alias_source_files": [
+        "URU_VN_SEVEL_2026-09-03.XLSX"
       ]
     }
   }

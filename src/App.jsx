@@ -21,7 +21,7 @@ import readExcelFile from 'read-excel-file/browser'
 import columnMapping from './config/column_mapping.json'
 import DatabasePage from './DatabasePage.jsx'
 import { EncuestaView } from './EncuestaView.tsx'
-import { prepareIngestion, runIngestion } from './lib/ingestion.js'
+import { acceptedSheetNames, detectFlow, prepareIngestion, runIngestion } from './lib/ingestion.js'
 import './App.css'
 
 const FLOW_CONFIG = {
@@ -117,12 +117,6 @@ async function extractRows(workbook, sheetName, onProgress, isCancelled) {
     await yieldToBrowser()
   }
   return { columns, rows, blankRows, sourceRowCount: sourceRows.length }
-}
-
-function detectFlow(sheetNames, currentFlow) {
-  if (sheetNames.includes(FLOW_CONFIG.PV.sheetName)) return 'PV'
-  if (sheetNames.includes(FLOW_CONFIG.VN.sheetName)) return 'VN'
-  return currentFlow
 }
 
 function buildIngestionPayload(file, flow, result) {
@@ -274,10 +268,9 @@ function App() {
       workbookRef.current = workbook
 
       const sheetNames = workbook.map((sheet) => sheet.sheet)
-      const detectedFlow = detectFlow(sheetNames, flow)
+      const { flow: detectedFlow, sheetName } = detectFlow(workbook, columnMapping, flow)
       setFlow(detectedFlow)
       const expectedSheet = FLOW_CONFIG[detectedFlow].sheetName
-      const sheetName = sheetNames.includes(expectedSheet) ? expectedSheet : sheetNames[0]
       const extracted = await parseSheet(workbook, sheetName, operationId)
       const fileHash = await hashPromise
       if (operationIdRef.current !== operationId) return
@@ -424,7 +417,7 @@ function App() {
 
   const technicalChecks = result ? [
     { label: 'Extension .xlsx', valid: file?.name.toLowerCase().endsWith('.xlsx') },
-    { label: `Feuille ${FLOW_CONFIG[flow].sheetName}`, valid: result.sheetName === FLOW_CONFIG[flow].sheetName },
+    { label: `Feuille ${acceptedSheetNames(columnMapping.flows[flow]).join(' / ')}`, valid: acceptedSheetNames(columnMapping.flows[flow]).includes(result.sheetName) },
     { label: '37 colonnes', valid: result.columns.length === result.expectedColumnCount },
     { label: 'Taille ≤ 50 Mo', valid: (file?.size ?? 0) <= MAX_FILE_SIZE },
   ] : []
