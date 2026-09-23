@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"/Users/mac/Documents/001-FANS/AN-AC_STELLANTIS/CSI/data/\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import cairosvg\")",
+      "Bash(rsvg-convert -w 300 lp.svg -o lp.png)",
+      "Bash(python3 -)",
+      "Bash(find ~/Downloads ~/Desktop ~/Documents -maxdepth 4 -iname \"*leap*\" 2>/dev/null | head -20; echo \"---recents---\"; find ~/Downloads ~/Desktop -maxdepth 2 \\\\\\( -iname \"*.png\" -o -iname \"*.jpg\" -o -iname \"*.svg\" -o -iname \"*.webp\" \\\\\\) -mtime -3 2>/dev/null | head -20)"
+    ]
+  }
+}

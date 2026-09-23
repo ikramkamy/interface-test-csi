@@ -1,0 +1,899 @@
+{
+  "mapping_version": "1.0.0",
+  "effective_from": "2026-07-29",
+  "target_table": "public.chargements",
+  "description": "Correspondance entre les en-tetes des fichiers Excel client (espagnol / portugais) et les colonnes anglaises de public.chargements. La resolution se fait sur `normalized_key`, jamais sur `source_header` brut.",
+  "header_normalization": {
+    "order": [
+      "1. repair_mojibake: si s.encode('latin-1').decode('utf-8') reussit ET que s contient 'Ã' ou 'Â', remplacer s par le resultat",
+      "2. strip_invisible: supprimer U+00AD, U+200B, U+200C, U+200D, U+2060, U+FEFF",
+      "3. unicode NFKD puis suppression des marques combinantes (accents)",
+      "4. casefold",
+      "5. remplacer toute suite de caracteres non alphanumeriques par un seul '_'",
+      "6. supprimer les '_' de tete et de fin"
+    ],
+    "invisible_codepoints": [
+      "U+00AD",
+      "U+200B",
+      "U+200C",
+      "U+200D",
+      "U+2060",
+      "U+FEFF"
+    ],
+    "known_source_defects": [
+      "VN colonne 3 'Descricao Vei<U+00AD>culo' : le 'i' accentue a ete remplace par 'i' + tiret conditionnel invisible.",
+      "VN colonne 18 'Complemento do endereÃ§o do comprador' : en-tete deja mal encode dans le fichier source (UTF-8 lu en latin-1), alors que les colonnes 16 et 17 voisines sont correctes."
+    ]
+  },
+  "unmatched_header_policy": "Un en-tete dont la normalized_key est inconnue ne doit jamais etre devine. Le lot est rejete avec un rapport listant les en-tetes non reconnus, les colonnes attendues manquantes, et la version de mapping utilisee.",
+  "generated_columns": {
+    "comment": "Colonnes de public.chargements absentes des fichiers source, produites par l'ingestion.",
+    "columns": [
+      "id",
+      "flow_type",
+      "batch_id",
+      "file_name",
+      "file_sha256",
+      "sheet_name",
+      "row_number",
+      "row_hash",
+      "status",
+      "raw_data",
+      "created_at",
+      "updated_at",
+      "created_by",
+      "updated_by"
+    ]
+  },
+  "flows": {
+    "PV": {
+      "label": "Apres-vente / Post-venta",
+      "source_file_reference": "PAN_PV_AUTOSTAR_2026-07-27.xlsx",
+      "sheet_name": "Data Postventa",
+      "expected_column_count": 37,
+      "reference_sample_rows": 21,
+      "detection": {
+        "sheet_name": "Data Postventa",
+        "required_normalized_keys": [
+          "market",
+          "motorizacion"
+        ]
+      },
+      "columns": [
+        {
+          "position": 0,
+          "source_header": "market",
+          "source_header_escaped": "market",
+          "normalized_key": "market",
+          "target_column": "market_name",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 1,
+          "source_header": "coddealer",
+          "source_header_escaped": "coddealer",
+          "normalized_key": "coddealer",
+          "target_column": "dealer_code",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 2,
+          "source_header": "dealer",
+          "source_header_escaped": "dealer",
+          "normalized_key": "dealer",
+          "target_column": "dealer_name",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 3,
+          "source_header": "site",
+          "source_header_escaped": "site",
+          "normalized_key": "site",
+          "target_column": "site",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 4,
+          "source_header": "vin",
+          "source_header_escaped": "vin",
+          "normalized_key": "vin",
+          "target_column": "vin",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 5,
+          "source_header": "mvscposcode",
+          "source_header_escaped": "mvscposcode",
+          "normalized_key": "mvscposcode",
+          "target_column": "mvsc_pos_code",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 6,
+          "source_header": "plate",
+          "source_header_escaped": "plate",
+          "normalized_key": "plate",
+          "target_column": "license_plate",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 7,
+          "source_header": "kmvheicle",
+          "source_header_escaped": "kmvheicle",
+          "normalized_key": "kmvheicle",
+          "target_column": "mileage",
+          "target_type": "integer",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 8,
+          "source_header": "brandname",
+          "source_header_escaped": "brandname",
+          "normalized_key": "brandname",
+          "target_column": "brand",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 9,
+          "source_header": "model",
+          "source_header_escaped": "model",
+          "normalized_key": "model",
+          "target_column": "model",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 10,
+          "source_header": "sales_channel",
+          "source_header_escaped": "sales_channel",
+          "normalized_key": "sales_channel",
+          "target_column": "sales_channel",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 11,
+          "source_header": "sales_date",
+          "source_header_escaped": "sales_date",
+          "normalized_key": "sales_date",
+          "target_column": "sale_date",
+          "target_type": "date",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 12,
+          "source_header": "delivery_date",
+          "source_header_escaped": "delivery_date",
+          "normalized_key": "delivery_date",
+          "target_column": "delivery_date",
+          "target_type": "date",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 13,
+          "source_header": "warranty_start_date",
+          "source_header_escaped": "warranty_start_date",
+          "normalized_key": "warranty_start_date",
+          "target_column": "warranty_start_date",
+          "target_type": "date",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 14,
+          "source_header": "repair_order_number",
+          "source_header_escaped": "repair_order_number",
+          "normalized_key": "repair_order_number",
+          "target_column": "repair_order_number",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 15,
+          "source_header": "entrydate",
+          "source_header_escaped": "entrydate",
+          "normalized_key": "entrydate",
+          "target_column": "workshop_entry_date",
+          "target_type": "date",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 16,
+          "source_header": "exitdate",
+          "source_header_escaped": "exitdate",
+          "normalized_key": "exitdate",
+          "target_column": "workshop_exit_date",
+          "target_type": "date",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 17,
+          "source_header": "intervention_type",
+          "source_header_escaped": "intervention_type",
+          "normalized_key": "intervention_type",
+          "target_column": "intervention_type",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 18,
+          "source_header": "intervention_subtype",
+          "source_header_escaped": "intervention_subtype",
+          "normalized_key": "intervention_subtype",
+          "target_column": "intervention_subtype",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 19,
+          "source_header": "contacttype",
+          "source_header_escaped": "contacttype",
+          "normalized_key": "contacttype",
+          "target_column": "customer_person_type",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 20,
+          "source_header": "documenttype",
+          "source_header_escaped": "documenttype",
+          "normalized_key": "documenttype",
+          "target_column": "customer_document_type",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 21,
+          "source_header": "documentnumber",
+          "source_header_escaped": "documentnumber",
+          "normalized_key": "documentnumber",
+          "target_column": "customer_document_number",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 22,
+          "source_header": "customer",
+          "source_header_escaped": "customer",
+          "normalized_key": "customer",
+          "target_column": "customer_name",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 23,
+          "source_header": "contact",
+          "source_header_escaped": "contact",
+          "normalized_key": "contact",
+          "target_column": "customer_contact",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 24,
+          "source_header": "address",
+          "source_header_escaped": "address",
+          "normalized_key": "address",
+          "target_column": "customer_address",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 25,
+          "source_header": "zipcode",
+          "source_header_escaped": "zipcode",
+          "normalized_key": "zipcode",
+          "target_column": "customer_postal_code",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 26,
+          "source_header": "descr_city",
+          "source_header_escaped": "descr_city",
+          "normalized_key": "descr_city",
+          "target_column": "customer_city",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 27,
+          "source_header": "department",
+          "source_header_escaped": "department",
+          "normalized_key": "department",
+          "target_column": "customer_state",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 28,
+          "source_header": "nation",
+          "source_header_escaped": "nation",
+          "normalized_key": "nation",
+          "target_column": "customer_country",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 29,
+          "source_header": "phone",
+          "source_header_escaped": "phone",
+          "normalized_key": "phone",
+          "target_column": "customer_phone",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 30,
+          "source_header": "mobile_phone",
+          "source_header_escaped": "mobile_phone",
+          "normalized_key": "mobile_phone",
+          "target_column": "customer_mobile",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 31,
+          "source_header": "email_address",
+          "source_header_escaped": "email_address",
+          "normalized_key": "email_address",
+          "target_column": "customer_email",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 32,
+          "source_header": "extract_date",
+          "source_header_escaped": "extract_date",
+          "normalized_key": "extract_date",
+          "target_column": "extract_date",
+          "target_type": "date",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 33,
+          "source_header": "CODIGO RECEPCIONISTA",
+          "source_header_escaped": "CODIGO RECEPCIONISTA",
+          "normalized_key": "codigo_recepcionista",
+          "target_column": "advisor_code",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 34,
+          "source_header": "NOMBRE RECEPCIONISTA",
+          "source_header_escaped": "NOMBRE RECEPCIONISTA",
+          "normalized_key": "nombre_recepcionista",
+          "target_column": "advisor_name",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 35,
+          "source_header": "Fecha de carga de Intervencion",
+          "source_header_escaped": "Fecha de carga de Intervencion",
+          "normalized_key": "fecha_de_carga_de_intervencion",
+          "target_column": "intervention_load_date",
+          "target_type": "date",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 36,
+          "source_header": "Motorización",
+          "source_header_escaped": "Motorizaci\\xf3n",
+          "normalized_key": "motorizacion",
+          "target_column": "engine",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": true
+        }
+      ]
+    },
+    "VN": {
+      "label": "Vente vehicule neuf / Modelo Ventas",
+      "source_file_reference": "PAN_VN_AUTOSTAR_2026_07_27.xlsx",
+      "sheet_name": "Modelo Ventas",
+      "expected_column_count": 37,
+      "reference_sample_rows": 6,
+      "detection": {
+        "sheet_name": "Modelo Ventas",
+        "required_normalized_keys": [
+          "codigo_vin",
+          "motorizacao"
+        ]
+      },
+      "columns": [
+        {
+          "position": 0,
+          "source_header": "Codigo VIN",
+          "source_header_escaped": "Codigo VIN",
+          "normalized_key": "codigo_vin",
+          "target_column": "vin",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 1,
+          "source_header": "Business Unit",
+          "source_header_escaped": "Business Unit",
+          "normalized_key": "business_unit",
+          "target_column": "brand",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 2,
+          "source_header": "Codigo Produto",
+          "source_header_escaped": "Codigo Produto",
+          "normalized_key": "codigo_produto",
+          "target_column": "product_code",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 3,
+          "source_header": "Descricao Vei­culo",
+          "source_header_escaped": "Descricao Vei\\xadculo",
+          "normalized_key": "descricao_veiculo",
+          "target_column": "model",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 4,
+          "source_header": "Segmento",
+          "source_header_escaped": "Segmento",
+          "normalized_key": "segmento",
+          "target_column": "segment",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 5,
+          "source_header": "Cor",
+          "source_header_escaped": "Cor",
+          "normalized_key": "cor",
+          "target_column": "color",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 6,
+          "source_header": "Opcionais",
+          "source_header_escaped": "Opcionais",
+          "normalized_key": "opcionais",
+          "target_column": "options",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 7,
+          "source_header": "Numero Venda",
+          "source_header_escaped": "Numero Venda",
+          "normalized_key": "numero_venda",
+          "target_column": "sale_number",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 8,
+          "source_header": "Mês de Referencia",
+          "source_header_escaped": "M\\xeas de Referencia",
+          "normalized_key": "mes_de_referencia",
+          "target_column": "reference_month",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 9,
+          "source_header": "Data Venda",
+          "source_header_escaped": "Data Venda",
+          "normalized_key": "data_venda",
+          "target_column": "sale_date",
+          "target_type": "date",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 10,
+          "source_header": "Codigo Dealer",
+          "source_header_escaped": "Codigo Dealer",
+          "normalized_key": "codigo_dealer",
+          "target_column": "dealer_code",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 11,
+          "source_header": "Nome Dealer",
+          "source_header_escaped": "Nome Dealer",
+          "normalized_key": "nome_dealer",
+          "target_column": "dealer_name",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 12,
+          "source_header": "Codigo Mercado do Dealer",
+          "source_header_escaped": "Codigo Mercado do Dealer",
+          "normalized_key": "codigo_mercado_do_dealer",
+          "target_column": "market_code",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 13,
+          "source_header": "Nome Mercado do Dealer",
+          "source_header_escaped": "Nome Mercado do Dealer",
+          "normalized_key": "nome_mercado_do_dealer",
+          "target_column": "market_name",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 14,
+          "source_header": "Nome Comprador",
+          "source_header_escaped": "Nome Comprador",
+          "normalized_key": "nome_comprador",
+          "target_column": "customer_name",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 15,
+          "source_header": "E-mail Comprador",
+          "source_header_escaped": "E-mail Comprador",
+          "normalized_key": "e_mail_comprador",
+          "target_column": "customer_email",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 16,
+          "source_header": "Endereço Comprador",
+          "source_header_escaped": "Endere\\xe7o Comprador",
+          "normalized_key": "endereco_comprador",
+          "target_column": "customer_address",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 17,
+          "source_header": "Nummero do endereço do comprador",
+          "source_header_escaped": "Nummero do endere\\xe7o do comprador",
+          "normalized_key": "nummero_do_endereco_do_comprador",
+          "target_column": "customer_address_number",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 18,
+          "source_header": "Complemento do endereÃ§o do comprador",
+          "source_header_escaped": "Complemento do endere\\xc3\\xa7o do comprador",
+          "normalized_key": "complemento_do_endereco_do_comprador",
+          "target_column": "customer_address_complement",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": true,
+          "empty_in_reference_sample": true,
+          "aliases": [
+            "complemento_do_enderea_o_do_comprador"
+          ]
+        },
+        {
+          "position": 19,
+          "source_header": "Bairro do comprador",
+          "source_header_escaped": "Bairro do comprador",
+          "normalized_key": "bairro_do_comprador",
+          "target_column": "customer_district",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 20,
+          "source_header": "Cidade do comprador",
+          "source_header_escaped": "Cidade do comprador",
+          "normalized_key": "cidade_do_comprador",
+          "target_column": "customer_city",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 21,
+          "source_header": "Estado do comprador",
+          "source_header_escaped": "Estado do comprador",
+          "normalized_key": "estado_do_comprador",
+          "target_column": "customer_state",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 22,
+          "source_header": "Código Mercado do Comprador",
+          "source_header_escaped": "C\\xf3digo Mercado do Comprador",
+          "normalized_key": "codigo_mercado_do_comprador",
+          "target_column": "customer_market_code",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 23,
+          "source_header": "Nome Mercado do Comprador",
+          "source_header_escaped": "Nome Mercado do Comprador",
+          "normalized_key": "nome_mercado_do_comprador",
+          "target_column": "customer_country",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 24,
+          "source_header": "CEP do comprador",
+          "source_header_escaped": "CEP do comprador",
+          "normalized_key": "cep_do_comprador",
+          "target_column": "customer_postal_code",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 25,
+          "source_header": "Telefone Comprador",
+          "source_header_escaped": "Telefone Comprador",
+          "normalized_key": "telefone_comprador",
+          "target_column": "customer_phone",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 26,
+          "source_header": "Celular Comprador",
+          "source_header_escaped": "Celular Comprador",
+          "normalized_key": "celular_comprador",
+          "target_column": "customer_mobile",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 27,
+          "source_header": "Pessoa PJ/PF",
+          "source_header_escaped": "Pessoa PJ/PF",
+          "normalized_key": "pessoa_pj_pf",
+          "target_column": "customer_person_type",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 28,
+          "source_header": "Canal Venda",
+          "source_header_escaped": "Canal Venda",
+          "normalized_key": "canal_venda",
+          "target_column": "sales_channel",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 29,
+          "source_header": "Data venda ao Dealer",
+          "source_header_escaped": "Data venda ao Dealer",
+          "normalized_key": "data_venda_ao_dealer",
+          "target_column": "dealer_sale_date",
+          "target_type": "date",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 30,
+          "source_header": "NOMBRE EMPRESA (PERS JURIDICA)",
+          "source_header_escaped": "NOMBRE EMPRESA (PERS JURIDICA)",
+          "normalized_key": "nombre_empresa_pers_juridica",
+          "target_column": "customer_company_name",
+          "target_type": "text",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 31,
+          "source_header": "NUMERO DE PATENTE O REGISTRO/DOMINIO",
+          "source_header_escaped": "NUMERO DE PATENTE O REGISTRO/DOMINIO",
+          "normalized_key": "numero_de_patente_o_registro_dominio",
+          "target_column": "license_plate",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": true,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 32,
+          "source_header": "FECHA PATENTE",
+          "source_header_escaped": "FECHA PATENTE",
+          "normalized_key": "fecha_patente",
+          "target_column": "license_plate_date",
+          "target_type": "date",
+          "shared_with_other_flow": false,
+          "pii": false,
+          "empty_in_reference_sample": true
+        },
+        {
+          "position": 33,
+          "source_header": "CÓDIGO VENDEDOR DEALER",
+          "source_header_escaped": "C\\xd3DIGO VENDEDOR DEALER",
+          "normalized_key": "codigo_vendedor_dealer",
+          "target_column": "advisor_code",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 34,
+          "source_header": "Nombre Vendedor",
+          "source_header_escaped": "Nombre Vendedor",
+          "normalized_key": "nombre_vendedor",
+          "target_column": "advisor_name",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 35,
+          "source_header": "FECHA ENTREGA",
+          "source_header_escaped": "FECHA ENTREGA",
+          "normalized_key": "fecha_entrega",
+          "target_column": "delivery_date",
+          "target_type": "date",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        },
+        {
+          "position": 36,
+          "source_header": "Motorização",
+          "source_header_escaped": "Motoriza\\xe7\\xe3o",
+          "normalized_key": "motorizacao",
+          "target_column": "engine",
+          "target_type": "text",
+          "shared_with_other_flow": true,
+          "pii": false,
+          "empty_in_reference_sample": false
+        }
+      ]
+    }
+  }
+}

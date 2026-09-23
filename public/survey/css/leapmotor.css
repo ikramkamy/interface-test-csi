@@ -1,0 +1,448 @@
+/*============================================================================================*/
+/* Charte Leapmotor — surcharges appliquees par-dessus style.css / custom.css                 */
+/* Vert de marque : #102F1E (releve sur le logo officiel)                                     */
+/* Theme CLAIR : fond blanc, textes sombres, accents verts.                                   */
+/*============================================================================================*/
+
+:root {
+  --lm-green: #102F1E;
+  --lm-green-soft: #1C4A31;
+  --lm-green-light: #3E8E6A;
+  --lm-mist: #DFE9E2;
+  --lm-ink: #1f2d2a;
+  --lm-ink-soft: #5b6b67;
+  --lm-line: #e2e9e5;
+  /* etat selectionne des reponses : meme vert que le bouton retour au survol
+     (--lm-mist #DFE9E2), avec une pointe de transparence */
+  --lm-green-pale: rgba(198, 216, 205, 0.92);
+}
+
+/* --- Fond de page : blanc --- */
+body.style_3 {
+  background: #ffffff;
+}
+
+@media (max-width: 767px) {
+  body.style_3 {
+    background: #ffffff;
+  }
+}
+
+/* --- En-tete : bandeau vert Leapmotor, logo blanc centre (comme les emails) --- */
+header {
+  background: var(--lm-green);
+  padding: 20px 0;
+  height: auto; /* style.css fige 90px, trop court pour contenir le logo */
+}
+
+header .brand_logo {
+  border-radius: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+/* style.css remonte le contenu sous l'en-tete (-90px) et pose un voile degrade
+   sombre pense pour les fonds fonces : sans objet sur le theme clair. */
+.wrapper_centering {
+  margin-top: 0;
+  background: none;
+}
+
+/* Centrage vertical du questionnaire dans la zone utile : pleine hauteur
+   moins l'en-tete (20px + logo 90px + 20px = 130px) et la bande basse fixe
+   (barre de progression / copyright, ~60px). */
+.wrapper_centering {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 130px - 60px);
+  height: auto;
+  margin-bottom: 60px;
+}
+
+.container_centering {
+  display: block;
+  vertical-align: unset;
+  width: 100%;
+  padding: 24px 0;
+}
+
+@media (max-width: 767px) {
+  /* bande basse empilee plus haute sur mobile */
+  .wrapper_centering {
+    min-height: calc(100vh - 130px - 90px);
+    margin-bottom: 90px;
+  }
+}
+
+/* --- Textes : sombres sur fond clair (style.css les met en blanc) --- */
+h3.main_question {
+  color: var(--lm-ink);
+}
+
+#middle-wizard em,
+#middle-wizard em small {
+  color: var(--lm-ink-soft);
+}
+
+.step .text-white {
+  color: var(--lm-ink-soft) !important;
+}
+
+/* --- Pied de page : copyright fixe en bas a gauche (style.css le posait en
+       absolute bottom:0 d'un conteneur devenu plus haut que l'ecran) --- */
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: auto;
+  padding: 14px 18px;
+  color: var(--lm-ink-soft);
+  background: transparent;
+  z-index: 3;
+}
+
+footer .container-fluid {
+  color: var(--lm-ink-soft);
+  padding: 0;
+}
+
+/* --- Boutons du wizard : vert plein sur fond clair --- */
+button.forward,
+button.submit {
+  background: var(--lm-green);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 50px;
+}
+
+button.forward:hover,
+button.submit:hover,
+.forward:hover,
+.process:hover {
+  background: var(--lm-green-soft);
+  color: #ffffff;
+}
+
+button.backward {
+  background: transparent;
+  color: var(--lm-green);
+  border: 1px solid var(--lm-green);
+  border-radius: 50px;
+}
+
+button.backward:hover {
+  background: var(--lm-mist);
+  color: var(--lm-green);
+}
+
+/* --- Barre de progression : fixee en bas a droite --- */
+#top-wizard {
+  position: fixed;
+  right: 24px;
+  bottom: 14px;
+  width: 260px;
+  z-index: 3;
+  padding-bottom: 0;
+}
+
+/* le degagement sous le questionnaire est porte par .wrapper_centering
+   (margin-bottom) pour ne pas fausser le centrage vertical */
+
+@media (max-width: 767px) {
+  /* Mobile : barre et copyright centres, empiles — la barre au-dessus */
+  #top-wizard {
+    width: 220px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 40px;
+  }
+
+  footer {
+    left: 0;
+    right: 0;
+    font-size: 11px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+
+
+}
+
+.ui-progressbar {
+  height: 22px;
+  border-radius: 50px;
+  background: var(--lm-line);
+  overflow: hidden;
+}
+
+/* --- Pourcentage affiche A L'INTERIEUR de la barre --- */
+.progress_wrap {
+  position: relative;
+}
+
+.progress_label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 22px;
+  line-height: 22px;
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  pointer-events: none;
+  /* lecture sur la piste claire */
+  color: var(--lm-green);
+}
+
+/* copie superposee, revelee uniquement sur la portion remplie (verte) */
+.progress_label--fill {
+  color: #ffffff;
+  -webkit-clip-path: inset(0 100% 0 0);
+  clip-path: inset(0 100% 0 0);
+}
+
+.ui-widget-header,
+.ui-progressbar .ui-progressbar-value {
+  background: var(--lm-green);
+  border: none;
+  border-radius: 50px;
+}
+
+/* --- Reponses a choix : cartes claires bordees, lisibles sur blanc --- */
+.checkbox_radio_container .wrapper {
+  color: var(--lm-ink);
+  background-color: #f6f9f7;
+  border: 1px solid var(--lm-line);
+}
+
+.checkbox_radio_container input[type="checkbox"]:checked ~ .wrapper,
+.checkbox_radio_container input[type="radio"]:checked ~ .wrapper {
+  background-color: var(--lm-green-pale);
+  border-color: var(--lm-green);
+  color: var(--lm-ink);
+}
+
+.checkbox_radio_container .radio,
+.checkbox_radio_container .checkbox {
+  border: 1px solid var(--lm-line);
+}
+
+.checkbox_radio_container .radio:before,
+.checkbox_radio_container .checkbox:before,
+.checkbox_radio_container .radio:after,
+.checkbox_radio_container .checkbox:after {
+  background: var(--lm-green);
+}
+
+/* --- Echelle 1 a 10 : cases claires bordees --- */
+.container_numbers .radio {
+  background-color: #f6f9f7;
+  border: 1px solid var(--lm-line);
+  color: var(--lm-ink);
+}
+
+/* une seule couleur de selection sur toute l'echelle (plus de rouge/ambre/vert) :
+   vert Leapmotor pali, legerement transparent */
+.container_numbers input[type="radio"]:checked ~ .radio.nps_bottom,
+.container_numbers input[type="radio"]:checked ~ .radio.nps_middle,
+.container_numbers input[type="radio"]:checked ~ .radio.nps_top,
+.container_numbers input[type="radio"]:checked ~ .radio.neutral,
+.container_numbers input[type="radio"]:hover ~ .radio.nps_bottom,
+.container_numbers input[type="radio"]:hover ~ .radio.nps_middle,
+.container_numbers input[type="radio"]:hover ~ .radio.nps_top,
+.container_numbers input[type="radio"]:hover ~ .radio.neutral,
+.container_numbers input[type="radio"].star_checked_nps_bottom ~ .radio,
+.container_numbers input[type="radio"].star_checked_nps_middle ~ .radio,
+.container_numbers input[type="radio"].star_checked_nps_top ~ .radio,
+.container_smile input[type="radio"]:checked ~ .radio.nps_bottom,
+.container_smile input[type="radio"]:checked ~ .radio.nps_middle,
+.container_smile input[type="radio"]:checked ~ .radio.nps_top,
+.container_smile input[type="radio"]:hover ~ .radio.nps_bottom,
+.container_smile input[type="radio"]:hover ~ .radio.nps_middle,
+.container_smile input[type="radio"]:hover ~ .radio.nps_top {
+  background-color: var(--lm-green-pale);
+  border-color: var(--lm-green);
+  color: var(--lm-ink);
+}
+
+/* --- Sous-questions des ecrans regroupes : enonce commun + libelles en italique --- */
+.question_sub {
+  margin: 0 0 12px 0;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 21px;
+  color: var(--lm-ink);
+}
+
+.question_sub--spaced {
+  margin-top: 26px;
+}
+
+/* --- Options de reponse horizontales (ecran cortesia + competencias) --- */
+.review_block--inline ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+
+.review_block--inline ul li {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review_block--inline ul li {
+  align-self: flex-start;
+}
+
+.review_block--inline .checkbox_radio_container {
+  margin-bottom: 0;
+}
+
+/* meme pastille radio/checkbox que les listes verticales (style.css la pose
+   en absolute left:8px top:7px), le libelle garde la place a sa gauche */
+/* memes dimensions que les listes verticales : padding 10px, police 14px */
+.review_block--inline .checkbox_radio_container .wrapper {
+  display: block;
+  width: 100%;
+  padding: 10px 10px 10px 42px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .review_block--inline .checkbox_radio_container .wrapper {
+    padding-left: 38px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* smartphone : 2 propositions par ligne */
+  .review_block--inline ul li {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+
+/* --- Champs libres --- */
+.form-control {
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid var(--lm-line);
+  color: var(--lm-ink);
+}
+
+.form-control:focus {
+  border-color: var(--lm-green-light);
+  box-shadow: 0 0 0 0.15rem rgba(62, 142, 106, 0.25);
+}
+
+/* --- Mention legale / notes de bas de page --- */
+.legal_note {
+  color: var(--lm-ink-soft);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.legal_note a {
+  color: var(--lm-green);
+  text-decoration: underline;
+}
+
+/* --- Precision « Otro » du questionnaire apres-vente --- */
+.specify_field {
+  margin-top: 10px;
+}
+
+/* --- Ecran d'introduction : titre au-dessus du texte courant --- */
+#qb h3.main_question {
+  font-size: 24px;
+  line-height: 32px;
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+#qb p {
+  font-size: 15px;
+  line-height: 23px;
+}
+
+/* --- Message de cloture : centre (style.css impose text-align:justify a .main_question) --- */
+#section-finished h3.main_question,
+#msg_end {
+  text-align: center;
+}
+
+/* --- Messages de validation inline supprimes : l'information passe par #modal-required --- */
+label.error,
+span.error {
+  display: none !important;
+}
+
+/* --- Fenetre « Respuesta obligatoria » --- */
+#modal-required .required_modal {
+  background: #ffffff;
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+#modal-required .modal-body {
+  padding: 32px 28px 28px 28px;
+}
+
+#modal-required .required_modal_title {
+  margin: 0 0 10px 0;
+  color: var(--lm-green);
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+#modal-required .required_modal_text {
+  margin: 0 0 22px 0;
+  color: #5b6b67;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+#modal-required .required_modal_btn {
+  height: auto;
+  min-width: 170px;
+  padding: 13px 32px;
+  background-color: var(--lm-green);
+  border: none;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+#modal-required .required_modal_btn:hover,
+#modal-required .required_modal_btn:focus {
+  background-color: var(--lm-green-soft);
+  color: #ffffff;
+}
+
+/* custom.css force .modal-backdrop a z-index:0, ce qui renvoie le voile derriere
+   la page et laisse la fenetre sans fond. On retablit la valeur Bootstrap. */
+.modal-backdrop {
+  z-index: 1040;
+}
+
+#modal-required {
+  z-index: 1050;
+}

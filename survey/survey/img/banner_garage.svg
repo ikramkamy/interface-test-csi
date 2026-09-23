@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 171" width="1366" height="171" role="img" aria-label="Votre avis nous intéresse - garage automobile">
+  <defs>
+    <linearGradient id="bgG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5aa89a"/>
+      <stop offset="0.55" stop-color="#4e9d8f"/>
+      <stop offset="1" stop-color="#3d8578"/>
+    </linearGradient>
+    <clipPath id="roundG">
+      <rect x="0" y="0" width="1366" height="171" rx="14" ry="14"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#roundG)">
+    <!-- Fond -->
+    <rect x="0" y="0" width="1366" height="171" fill="url(#bgG)"/>
+
+    <!-- Cercles décoratifs -->
+    <circle cx="1200" cy="20" r="140" fill="#ffffff" opacity="0.06"/>
+    <circle cx="1310" cy="150" r="100" fill="#ffffff" opacity="0.05"/>
+
+    <!-- Silhouette de voiture -->
+    <g opacity="0.14" fill="#ffffff">
+      <path d="M980,126 L995,108 C1001,99 1010,95 1022,95 L1088,95 C1096,95 1103,98 1109,104 L1132,124 L1250,132 C1260,133 1266,139 1266,148 L1266,126 Z M980,126 L1266,126 L1266,142 C1266,146 1262,150 1258,150 L988,150 C984,150 980,146 980,142 Z"/>
+    </g>
+    <!-- Vitres -->
+    <path d="M1024,100 L1080,100 C1086,100 1091,102 1095,107 L1108,120 L1030,120 Z" fill="#3d8578" opacity="0.5"/>
+    <!-- Roues -->
+    <g>
+      <circle cx="1030" cy="150" r="20" fill="#2f4d47"/>
+      <circle cx="1030" cy="150" r="9" fill="#ffffff" opacity="0.8"/>
+      <circle cx="1210" cy="150" r="20" fill="#2f4d47"/>
+      <circle cx="1210" cy="150" r="9" fill="#ffffff" opacity="0.8"/>
+    </g>
+
+    <!-- Badge engrenage -->
+    <circle cx="98" cy="85" r="52" fill="#ffffff"/>
+    <g transform="translate(98,85)" fill="#4e9d8f">
+      <g>
+        <rect x="-6" y="-46" width="12" height="16" rx="2"/>
+        <rect x="-6" y="-46" width="12" height="16" rx="2" transform="rotate(45)"/>
+        <rect x="-6" y="-46" width="12" height="16" rx="2" transform="rotate(90)"/>
+        <rect x="-6" y="-46" width="12" height="16" rx="2" transform="rotate(135)"/>
+        <rect x="-6" y="-46" width="12" height="16" rx="2" transform="rotate(180)"/>
+        <rect x="-6" y="-46" width="12" height="16" rx="2" transform="rotate(225)"/>
+        <rect x="-6" y="-46" width="12" height="16" rx="2" transform="rotate(270)"/>
+        <rect x="-6" y="-46" width="12" height="16" rx="2" transform="rotate(315)"/>
+      </g>
+      <circle r="32"/>
+    </g>
+    <circle cx="98" cy="85" r="14" fill="#ffffff"/>
+
+    <!-- Texte -->
+    <text x="188" y="78" font-family="'Poppins','Segoe UI',Arial,sans-serif" font-size="44" font-weight="700" fill="#ffffff">Votre avis nous intéresse</text>
+    <text x="190" y="120" font-family="'Poppins','Segoe UI',Arial,sans-serif" font-size="23" font-weight="400" fill="#ffffff" opacity="0.92">Votre garage à l’écoute de votre satisfaction</text>
+  </g>
+</svg>

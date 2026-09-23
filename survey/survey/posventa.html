@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Leapmotor | Encuesta de satisfacción — Posventa">
+  <meta name="author" content="">
+  <title>Leapmotor | Encuesta de satisfacción — Posventa</title>
+  <!-- Favicons-->
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <!-- GOOGLE WEB FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Caveat|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+  <!-- BASE CSS -->
+  <link href="css/bootstrap.min.css?v=3" rel="stylesheet">
+  <link href="css/style.css?v=3" rel="stylesheet">
+  <link href="css/vendors.css?v=3" rel="stylesheet">
+  <!-- YOUR CUSTOM CSS -->
+  <link href="css/custom.css?v=3" rel="stylesheet">
+  <!-- CHARTE LEAPMOTOR -->
+  <link href="css/leapmotor.css?v=1" rel="stylesheet">
+</head>
+
+<body class="style_3">
+  <div id="preloader">
+    <div data-loader="circle-side"></div>
+  </div>
+  <!-- /Preload -->
+  <div id="loader_form">
+    <div data-loader="circle-side-2"></div>
+  </div>
+  <!-- /loader_form -->
+  <header>
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-12">
+          <img src="img/leapmotor_logo.png" alt="Leapmotor" height="90" width="auto" class="brand_logo">
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </header>
+  <!-- /header -->
+
+  <div class="wrapper_centering">
+    <div class="container_centering">
+      <div class="container">
+        <div class="row justify-content-between">
+
+          <div id="section-finished" class="col-xl-12 col-lg-12 d-none">
+            <div class="main_title text-center">
+              <h3 class="main_question" id="msg_end">Gracias por su tiempo y su evaluación. La encuesta ha finalizado.</h3>
+              <h3 class="main_question d-none" id="msg_alert">Gracias por su tiempo y su evaluación. Hemos transmitido sus comentarios al concesionario para que se ponga en contacto con usted.</h3>
+            </div>
+          </div>
+
+          <div id="section-survey" class="col-xl-12 col-lg-12 d-flex align-items-center">
+            <div id="wizard_container">
+              <div id="top-wizard">
+                <div class="progress_wrap mt-1">
+                  <div id="progressbar"></div>
+                  <!-- Le pourcentage est centre DANS la barre. Deux calques superposes :
+                       le blanc se lit sur la piste sombre, la copie vert fonce est revelee
+                       exactement sur la portion remplie via clip-path. -->
+                  <span class="progress_label" id="location">0 %</span>
+                  <span class="progress_label progress_label--fill" id="location_fill" aria-hidden="true">0 %</span>
+                </div>
+              </div>
+              <!-- /top-wizard -->
+              <form id="wrapped" method="POST" autocomplete="off">
+                <input id="website" name="website" type="text" value="">
+                <!-- Leave for security protection, read docs for details -->
+                <div id="middle-wizard">
+
+                  <div class="step" id="q1" data-order="1">
+                    <h3 class="main_question">Pensando en esta visita, ¿qué tan satisfecho(a) está con su experiencia en el Taller Oficial?</h3>
+                    <div class="review_block_numbers">
+                      <ul class="clearfix">
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_1" name="question_1" value="1"
+                              onchange="getVals(this, 'question_1');" required>
+                            <label class="radio nps_bottom" for="question_1_1">1</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_2" name="question_1" value="2"
+                              onchange="getVals(this, 'question_1');">
+                            <label class="radio nps_bottom" for="question_1_2">2</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_3" name="question_1" value="3"
+                              onchange="getVals(this, 'question_1');">
+                            <label class="radio nps_bottom" for="question_1_3">3</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_4" name="question_1" value="4"
+                              onchange="getVals(this, 'question_1');">
+                            <label class="radio nps_bottom" for="question_1_4">4</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_5" name="question_1" value="5"
+                              onchange="getVals(this, 'question_1');">
+                            <label class="radio nps_bottom" for="question_1_5">5</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_6" name="question_1" value="6"
+                              onchange="getVals(this, 'question_1');">
+                            <label class="radio nps_bottom" for="question_1_6">6</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_7" name="question_1" value="7"
+                              onchange="getVals(this, 'question_1');">
+                            <label class="radio nps_middle" for="question_1_7">7</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_8" name="question_1" value="8"
+                              onchange="getVals(this, 'question_1');">
+                            <label class="radio nps_middle" for="question_1_8">8</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_9" name="question_1" value="9"
+                              onchange="getVals(this, 'question_1');">
+                            <label class="radio nps_top" for="question_1_9">9</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_1_10" name="question_1" value="10"
+                              onchange="getVals(this, 'question_1');">
+                            <label class="radio nps_top" for="question_1_10">10</label>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="row justify-content-between add_bottom_25">
+                        <div class="col-5"><em>Totalmente insatisfecho(a)</em></div>
+                        <div class="col-5 text-right"><em>Totalmente satisfecho(a)</em></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /q1 — OSAT -->
+
+                  <div class="step" id="q2" data-order="2">
+                    <h3 class="main_question">Basándose en su experiencia, ¿qué tan probable es que recomiende este concesionario?</h3>
+                    <div class="review_block_numbers">
+                      <ul class="clearfix">
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_1" name="question_2" value="1"
+                              onchange="getVals(this, 'question_2');" required>
+                            <label class="radio nps_bottom" for="question_2_1">1</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_2" name="question_2" value="2"
+                              onchange="getVals(this, 'question_2');">
+                            <label class="radio nps_bottom" for="question_2_2">2</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_3" name="question_2" value="3"
+                              onchange="getVals(this, 'question_2');">
+                            <label class="radio nps_bottom" for="question_2_3">3</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_4" name="question_2" value="4"
+                              onchange="getVals(this, 'question_2');">
+                            <label class="radio nps_bottom" for="question_2_4">4</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_5" name="question_2" value="5"
+                              onchange="getVals(this, 'question_2');">
+                            <label class="radio nps_bottom" for="question_2_5">5</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_6" name="question_2" value="6"
+                              onchange="getVals(this, 'question_2');">
+                            <label class="radio nps_bottom" for="question_2_6">6</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_7" name="question_2" value="7"
+                              onchange="getVals(this, 'question_2');">
+                            <label class="radio nps_middle" for="question_2_7">7</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_8" name="question_2" value="8"
+                              onchange="getVals(this, 'question_2');">
+                            <label class="radio nps_middle" for="question_2_8">8</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_9" name="question_2" value="9"
+                              onchange="getVals(this, 'question_2');">
+                            <label class="radio nps_top" for="question_2_9">9</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="container_numbers">
+                            <input type="radio" id="question_2_10" name="question_2" value="10"
+                              onchange="getVals(this, 'question_2');">
+                            <label class="radio nps_top" for="question_2_10">10</label>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="row justify-content-between add_bottom_25">
+                        <div class="col-5"><em>Muy poco probable</em></div>
+                        <div class="col-5 text-right"><em>Muy probable</em></div>
+                      </div>
+                    </div>
+                    <h3 class="main_question">Por favor, compártanos qué le gustó de su experiencia y qué podría mejorarse.</h3>
+                    <div class="form-group">
+                      <textarea name="question_3" id="question_3_field" class="form-control"
+                        maxlength="500" rows="5" placeholder="Respuesta opcional"
+                        onkeyup="getVals(this, 'question_3');"></textarea>
+                    </div>
+                  </div>
+                  <!-- /q2 — RECO -->
+
+
+                  <div class="step" id="q4" data-order="3">
+                    <h3 class="main_question">¿Cuáles fueron los motivos de esta visita?</h3>
+                    <p class="text-white" style="opacity:.75; font-size:13px; margin-top:-10px;">Seleccione todo lo que corresponda.</p>
+                    <div class="review_block">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="checkbox" id="question_4_opt_1" name="question_4" value="Servicio de mantenimiento"
+                              onchange="getVals(this, 'question_4');">
+                            <label class="checkbox" for="question_4_opt_1"></label>
+                            <label for="question_4_opt_1" class="wrapper">Servicio de mantenimiento</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="checkbox" id="question_4_opt_2" name="question_4" value="Reparación"
+                              onchange="getVals(this, 'question_4');">
+                            <label class="checkbox" for="question_4_opt_2"></label>
+                            <label for="question_4_opt_2" class="wrapper">Reparación</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="checkbox" id="question_4_opt_3" name="question_4" value="Campaña de revisión de la marca (Recall)"
+                              onchange="getVals(this, 'question_4');">
+                            <label class="checkbox" for="question_4_opt_3"></label>
+                            <label for="question_4_opt_3" class="wrapper">Campaña de revisión de la marca (Recall)</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="checkbox" id="question_4_opt_4" name="question_4" value="Instalación de accesorios"
+                              onchange="getVals(this, 'question_4');">
+                            <label class="checkbox" for="question_4_opt_4"></label>
+                            <label for="question_4_opt_4" class="wrapper">Instalación de accesorios</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="checkbox" id="question_4_opt_5" name="question_4" value="Trabajos de carrocería (desabolladura y pintura)"
+                              onchange="getVals(this, 'question_4');">
+                            <label class="checkbox" for="question_4_opt_5"></label>
+                            <label for="question_4_opt_5" class="wrapper">Trabajos de carrocería (desabolladura y pintura)</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="checkbox" id="question_4_opt_6" name="question_4" value="Otro"
+                              onchange="getVals(this, 'question_4');">
+                            <label class="checkbox" for="question_4_opt_6"></label>
+                            <label for="question_4_opt_6" class="wrapper">Otro</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div id="question_4_specify_wrap" class="form-group specify_field d-none">
+                      <input type="text" class="form-control" id="question_4_specify"
+                        name="question_4_specify" maxlength="120" placeholder="Por favor, especifique"
+                        onkeyup="getVals(this, 'question_4_specify');">
+                    </div>
+                    <!-- « Otro » = option 6 : affiche le champ de precision -->
+                  </div>
+                  <!-- /q4 — REAS -->
+
+                  <div class="step" id="q5" data-order="4">
+                    <h3 class="main_question">¿Qué tan satisfecho(a) está con:</h3>
+                    <p class="question_sub">las instalaciones del taller oficial (recepción de servicios, estacionamiento de clientes, zona de espera, etc.)</p>
+                    <div class="review_block review_block--inline">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_5_opt_1" name="question_5" value="Muy satisfecho"
+                              onchange="getVals(this, 'question_5');" required>
+                            <label class="radio" for="question_5_opt_1"></label>
+                            <label for="question_5_opt_1" class="wrapper">Muy satisfecho</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_5_opt_2" name="question_5" value="Satisfecho"
+                              onchange="getVals(this, 'question_5');">
+                            <label class="radio" for="question_5_opt_2"></label>
+                            <label for="question_5_opt_2" class="wrapper">Satisfecho</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_5_opt_3" name="question_5" value="Insatisfecho"
+                              onchange="getVals(this, 'question_5');">
+                            <label class="radio" for="question_5_opt_3"></label>
+                            <label for="question_5_opt_3" class="wrapper">Insatisfecho</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_5_opt_4" name="question_5" value="Muy insatisfecho"
+                              onchange="getVals(this, 'question_5');">
+                            <label class="radio" for="question_5_opt_4"></label>
+                            <label for="question_5_opt_4" class="wrapper">Muy insatisfecho</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <p class="question_sub question_sub--spaced">la cortesía y la amabilidad del personal del taller de servicio</p>
+                    <div class="review_block review_block--inline">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_6_opt_1" name="question_6" value="Muy satisfecho"
+                              onchange="getVals(this, 'question_6');" required>
+                            <label class="radio" for="question_6_opt_1"></label>
+                            <label for="question_6_opt_1" class="wrapper">Muy satisfecho</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_6_opt_2" name="question_6" value="Satisfecho"
+                              onchange="getVals(this, 'question_6');">
+                            <label class="radio" for="question_6_opt_2"></label>
+                            <label for="question_6_opt_2" class="wrapper">Satisfecho</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_6_opt_3" name="question_6" value="Insatisfecho"
+                              onchange="getVals(this, 'question_6');">
+                            <label class="radio" for="question_6_opt_3"></label>
+                            <label for="question_6_opt_3" class="wrapper">Insatisfecho</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_6_opt_4" name="question_6" value="Muy insatisfecho"
+                              onchange="getVals(this, 'question_6');">
+                            <label class="radio" for="question_6_opt_4"></label>
+                            <label for="question_6_opt_4" class="wrapper">Muy insatisfecho</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <p class="question_sub question_sub--spaced">las competencias (profesionalismo y conocimientos) del Asesor de Servicio</p>
+                    <div class="review_block review_block--inline">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_7_opt_1" name="question_7" value="Muy satisfecho"
+                              onchange="getVals(this, 'question_7');" required>
+                            <label class="radio" for="question_7_opt_1"></label>
+                            <label for="question_7_opt_1" class="wrapper">Muy satisfecho</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_7_opt_2" name="question_7" value="Satisfecho"
+                              onchange="getVals(this, 'question_7');">
+                            <label class="radio" for="question_7_opt_2"></label>
+                            <label for="question_7_opt_2" class="wrapper">Satisfecho</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_7_opt_3" name="question_7" value="Insatisfecho"
+                              onchange="getVals(this, 'question_7');">
+                            <label class="radio" for="question_7_opt_3"></label>
+                            <label for="question_7_opt_3" class="wrapper">Insatisfecho</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_7_opt_4" name="question_7" value="Muy insatisfecho"
+                              onchange="getVals(this, 'question_7');">
+                            <label class="radio" for="question_7_opt_4"></label>
+                            <label for="question_7_opt_4" class="wrapper">Muy insatisfecho</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /q5 — FACILITIES -->
+
+
+
+                  <div class="step" id="q8" data-order="5">
+                    <h3 class="main_question">Con respecto a esta visita al taller:</h3>
+                    <p class="question_sub">La calidad de los servicios prestados por este taller…</p>
+                    <div class="review_block review_block--inline">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_8_opt_1" name="question_8" value="Superó mis expectativas"
+                              onchange="getVals(this, 'question_8');" required>
+                            <label class="radio" for="question_8_opt_1"></label>
+                            <label for="question_8_opt_1" class="wrapper">Superó mis expectativas</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_8_opt_2" name="question_8" value="Cumplió mis expectativas"
+                              onchange="getVals(this, 'question_8');">
+                            <label class="radio" for="question_8_opt_2"></label>
+                            <label for="question_8_opt_2" class="wrapper">Cumplió mis expectativas</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_8_opt_3" name="question_8" value="No cumplió mis expectativas"
+                              onchange="getVals(this, 'question_8');">
+                            <label class="radio" for="question_8_opt_3"></label>
+                            <label for="question_8_opt_3" class="wrapper">No cumplió mis expectativas</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <p class="question_sub question_sub--spaced">El estado de su vehículo al momento de la restitución, incluida la limpieza…</p>
+                    <div class="review_block review_block--inline">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_12_opt_1" name="question_12" value="Superó mis expectativas"
+                              onchange="getVals(this, 'question_12');" required>
+                            <label class="radio" for="question_12_opt_1"></label>
+                            <label for="question_12_opt_1" class="wrapper">Superó mis expectativas</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_12_opt_2" name="question_12" value="Cumplió mis expectativas"
+                              onchange="getVals(this, 'question_12');">
+                            <label class="radio" for="question_12_opt_2"></label>
+                            <label for="question_12_opt_2" class="wrapper">Cumplió mis expectativas</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_12_opt_3" name="question_12" value="No cumplió mis expectativas"
+                              onchange="getVals(this, 'question_12');">
+                            <label class="radio" for="question_12_opt_3"></label>
+                            <label for="question_12_opt_3" class="wrapper">No cumplió mis expectativas</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /q8 — WORK -->
+
+                  <div class="step" id="q9" data-order="6">
+                    <h3 class="main_question">¿Se completó correctamente todo el trabajo solicitado durante esta visita?</h3>
+                    <div class="review_block">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_9_opt_1" name="question_9" value="Sí"
+                              onchange="getVals(this, 'question_9');" required>
+                            <label class="radio" for="question_9_opt_1"></label>
+                            <label for="question_9_opt_1" class="wrapper">Sí</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_9_opt_2" name="question_9" value="No"
+                              onchange="getVals(this, 'question_9');">
+                            <label class="radio" for="question_9_opt_2"></label>
+                            <label for="question_9_opt_2" class="wrapper">No</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /q9 — FFXV -->
+
+                  <div class="step" id="q10" data-order="7">
+                    <h3 class="main_question">¿Qué tan satisfecho(a) está con la explicación de los trabajos realizados y los costos correspondientes?</h3>
+                    <div class="review_block">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_10_opt_1" name="question_10" value="Superó mis expectativas"
+                              onchange="getVals(this, 'question_10');" required>
+                            <label class="radio" for="question_10_opt_1"></label>
+                            <label for="question_10_opt_1" class="wrapper">Superó mis expectativas</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_10_opt_2" name="question_10" value="Cumplió mis expectativas"
+                              onchange="getVals(this, 'question_10');">
+                            <label class="radio" for="question_10_opt_2"></label>
+                            <label for="question_10_opt_2" class="wrapper">Cumplió mis expectativas</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_10_opt_3" name="question_10" value="No cumplió mis expectativas"
+                              onchange="getVals(this, 'question_10');">
+                            <label class="radio" for="question_10_opt_3"></label>
+                            <label for="question_10_opt_3" class="wrapper">No cumplió mis expectativas</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /q10 — EXPL -->
+
+                  <div class="step" id="q11" data-order="8">
+                    <h3 class="main_question">¿Estaba listo su vehículo en el momento acordado inicialmente?</h3>
+                    <div class="review_block">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_11_opt_1" name="question_11" value="Sí"
+                              onchange="getVals(this, 'question_11');" required>
+                            <label class="radio" for="question_11_opt_1"></label>
+                            <label for="question_11_opt_1" class="wrapper">Sí</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_11_opt_2" name="question_11" value="No, y no me informaron"
+                              onchange="getVals(this, 'question_11');">
+                            <label class="radio" for="question_11_opt_2"></label>
+                            <label for="question_11_opt_2" class="wrapper">No, y no me informaron</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_11_opt_3" name="question_11" value="No, y me informaron"
+                              onchange="getVals(this, 'question_11');">
+                            <label class="radio" for="question_11_opt_3"></label>
+                            <label for="question_11_opt_3" class="wrapper">No, y me informaron</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /q11 — TIMING -->
+
+
+                  <div class="step" id="q13" data-order="9">
+                    <h3 class="main_question">Posterior al servicio, ¿recibió un contacto (vía WhatsApp, teléfono, e-mail) de su concesionario para asegurarse de que todo cumplía con sus expectativas?</h3>
+                    <div class="review_block">
+                      <ul>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_13_opt_1" name="question_13" value="Sí"
+                              onchange="getVals(this, 'question_13');" required>
+                            <label class="radio" for="question_13_opt_1"></label>
+                            <label for="question_13_opt_1" class="wrapper">Sí</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="checkbox_radio_container">
+                            <input type="radio" id="question_13_opt_2" name="question_13" value="No"
+                              onchange="getVals(this, 'question_13');">
+                            <label class="radio" for="question_13_opt_2"></label>
+                            <label for="question_13_opt_2" class="wrapper">No</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /q13 — CARE -->
+
+                  <div class="submit step" id="q14" data-order="10">
+                    <h3 class="main_question">Por favor, comparta cualquier comentario adicional o reflexión final sobre su experiencia en el Servicio.</h3>
+                    <div class="form-group">
+                      <textarea name="question_14" id="question_14_field" class="form-control"
+                        maxlength="500" rows="5" placeholder="Respuesta opcional"
+                        onkeyup="getVals(this, 'question_14');"></textarea>
+                    </div>
+                  </div>
+                  <!-- /q14 — FVER -->
+
+                </div>
+                <!-- /middle-wizard -->
+                <div id="bottom-wizard">
+                  <!-- Le plugin wizard cible .backward / .forward ; il desactive le retour
+                       sur la premiere question et style.css masque button[disabled]. -->
+                  <button type="button" name="backward" class="backward text-uppercase float-left">Anterior</button>
+                  <button type="button" name="forward" class="forward text-uppercase float-right">Siguiente</button>
+                  <button type="button" name="process"
+                    class="submit process text-uppercase float-right">Finalizar</button>
+                </div>
+                <!-- /bottom-wizard -->
+              </form>
+            </div>
+            <!-- /Wizard container -->
+          </div>
+
+        </div>
+        <!-- /row -->
+      </div>
+      <!-- /container -->
+    </div>
+    <!-- /container_centering -->
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            ©<span id="copyright_year"></span> FANS powered by SATISFACTIVE
+          </div>
+          <!-- Emplacement reserve a la « nota de privacidad » (texte non fourni a ce jour, cf. carte.docx) -->
+        </div>
+        <!-- /row -->
+      </div>
+      <!-- /container-fluid -->
+    </footer>
+    <!-- /footer -->
+  </div>
+  <!-- /wrapper_centering -->
+
+  <!-- Fenetre affichee quand une question obligatoire est laissee sans reponse -->
+  <div class="modal fade" id="modal-required" tabindex="-1" role="dialog"
+    aria-labelledby="modal-required-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content required_modal">
+        <div class="modal-body text-center">
+          <h5 class="required_modal_title" id="modal-required-title">Respuesta obligatoria</h5>
+          <p class="required_modal_text">Por favor, responda a esta pregunta para continuar.</p>
+          <button type="button" class="btn required_modal_btn" data-dismiss="modal">Entendido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMON SCRIPTS -->
+  <script src="js/jquery-3.2.1.min.js?v=3"></script>
+  <script src="js/common_scripts.min.js?v=3"></script>
+  <script src="js/functions.js?v=3"></script>
+  <!-- Wizard (local, sans API) -->
+  <script>
+    // Affiche/masque un bloc conditionnel
+    function toggleBlock(id, show) {
+      if (show) { jQuery(id).removeClass('d-none'); }
+      else { jQuery(id).addClass('d-none'); }
+    }
+
+    function get(k) { return sessionStorage.getItem(k); }
+
+    jQuery(function ($) {
+      "use strict";
+      document.getElementById("copyright_year").textContent = new Date().getFullYear();
+
+      // Finalizar : collecte locale, aucun envoi API
+      $("form#wrapped button[name='process']").click(function () {
+        if ($('form#wrapped')[0].checkValidity()) {
+          var survey = {
+            questionnaire: "AS_SA_2026",
+            canal: "QR",
+            post_date: new Date().toISOString(),
+            answers: {
+              OSAT: get("q1"),
+              RECO: get("q2"),
+              OVER: get("q3"),
+              REAS: get("q4"),
+              REAS_OTRO: get("q4_specify"),
+              FACILITIES: get("q5"),
+              STAF: get("q6"),
+              COMPETENCE: get("q7"),
+              WORK: get("q8"),
+              FFXV: get("q9"),
+              EXPL: get("q10"),
+              TIMING: get("q11"),
+              RESTITUTION: get("q12"),
+              CARE: get("q13"),
+              FVER: get("q14")
+            }
+          };
+
+          // HOT ALERT TRIGGERS (definis dans le questionnaire source)
+          survey.has_alert =
+        // OSAT : nota de 6 o menos
+        (parseInt(get("q1"), 10) > 0 && parseInt(get("q1"), 10) <= 6) ||
+        // STAF
+        (["Insatisfecho", "Muy insatisfecho"].indexOf(get("q6")) !== -1) ||
+        // WORK
+        (["No cumplió mis expectativas"].indexOf(get("q8")) !== -1) ||
+        // FFXV
+        (["No"].indexOf(get("q9")) !== -1) ||
+        // EXPL
+        (["No cumplió mis expectativas"].indexOf(get("q10")) !== -1) ||
+        // CARE
+        (["No"].indexOf(get("q13")) !== -1);
+
+          // Pas d'envoi API : la reponse reste locale
+          console.log(survey);
+          var hasAlert = survey.has_alert;
+          sessionStorage.clear();
+
+          // Message de cloture : version MASTER par defaut, version « recontact »
+          // lorsqu'un hot alert est declenche.
+          $("#loader_form").fadeIn();
+          setTimeout(function () {
+            $("#loader_form").fadeOut();
+            $("#section-survey").addClass("d-none").removeClass("d-flex");
+            if (hasAlert) {
+              $("#msg_end").addClass('d-none');
+              $("#msg_alert").removeClass('d-none');
+            } else {
+              $("#msg_alert").addClass('d-none');
+              $("#msg_end").removeClass('d-none');
+            }
+            $("#section-finished").removeClass("d-none");
+          }, 600);
+        }
+      });
+
+      // Wizard
+      $("#wizard_container").wizard({
+        stepsWrapper: "#wrapped",
+        submit: ".submit",
+        beforeSelect: function (event, state) {
+          if ($('input#website').val().length != 0) {
+            return false;
+          }
+          if (!state.isMovingForward)
+            return true;
+          var inputs = $(this).wizard('state').step.find(':input');
+          var isValid = !inputs.length || !!inputs.valid();
+          // Question obligatoire sans reponse : on affiche la fenetre d'information
+          // au lieu du message « Required. » sous le champ.
+          if (!isValid) {
+            $('#modal-required').modal('show');
+          }
+          return isValid;
+        }
+      }).validate({
+        errorPlacement: function () { }
+      });
+
+      // IMPORTANT : les <input> radio/checkbox sont masques visuellement (seul le <label>
+      // est affiche). Sans "ignore: []", jQuery Validate les considere comme :hidden,
+      // ne valide plus rien et bloque la navigation du wizard.
+      $('#wrapped').validate({
+        ignore: [],
+        rules: {
+          select: {
+            required: true
+          },
+          question_4: {
+            required: true
+          }
+        },
+        // Aucun message inline : l'information passe par la fenetre #modal-required.
+        errorPlacement: function () { }
+      });
+
+      // Barre de progression
+      $("#progressbar").progressbar();
+      $("#wizard_container").wizard({
+        afterSelect: function (event, state) {
+          let progress
+          (state.stepsPossible > 1) ? progress = Math.floor(state.stepsComplete / state.stepsPossible * 100) : progress = Math.floor(state.stepsComplete / (state.stepsPossible + 1) * 100)
+          $("#location, #location_fill").text(progress + " %");
+          // revele la copie vert fonce exactement sur la portion remplie
+          $("#location_fill").css({
+            "-webkit-clip-path": "inset(0 " + (100 - progress) + "% 0 0)",
+            "clip-path": "inset(0 " + (100 - progress) + "% 0 0)"
+          });
+          $("#progressbar").progressbar("value", progress);
+        }
+      });
+    });
+
+    // Enregistre les reponses
+    function getVals(formControl, controlType) {
+      var v = jQuery(formControl).val();
+      switch (controlType) {
+        case 'question_1':
+          sessionStorage.setItem("q1", v);
+          break;
+        case 'question_2':
+          sessionStorage.setItem("q2", v);
+          break;
+        case 'question_3':
+          sessionStorage.setItem("q3", v);
+          break;
+        case 'question_4': {
+          var vals = jQuery('input[name="question_4"]:checked').map(function () {
+            return jQuery(this).val();
+          }).get();
+          sessionStorage.setItem("q4", vals.join(', '));
+          toggleBlock('#question_4_specify_wrap', vals.indexOf("Otro") !== -1);
+          break;
+        }
+        case 'question_4_specify':
+          sessionStorage.setItem("q4_specify", v);
+          break;
+        case 'question_5':
+          sessionStorage.setItem("q5", v);
+          break;
+        case 'question_6':
+          sessionStorage.setItem("q6", v);
+          break;
+        case 'question_7':
+          sessionStorage.setItem("q7", v);
+          break;
+        case 'question_8':
+          sessionStorage.setItem("q8", v);
+          break;
+        case 'question_9':
+          sessionStorage.setItem("q9", v);
+          break;
+        case 'question_10':
+          sessionStorage.setItem("q10", v);
+          break;
+        case 'question_11':
+          sessionStorage.setItem("q11", v);
+          break;
+        case 'question_12':
+          sessionStorage.setItem("q12", v);
+          break;
+        case 'question_13':
+          sessionStorage.setItem("q13", v);
+          break;
+        case 'question_14':
+          sessionStorage.setItem("q14", v);
+          break;
+      }
+    }
+  </script>
+</body>
+
+</html>

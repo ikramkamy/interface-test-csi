@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 171" width="1366" height="171" role="img" aria-label="Votre avis nous intéresse - clinique">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5aa89a"/>
+      <stop offset="0.55" stop-color="#4e9d8f"/>
+      <stop offset="1" stop-color="#3d8578"/>
+    </linearGradient>
+    <clipPath id="round">
+      <rect x="0" y="0" width="1366" height="171" rx="14" ry="14"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#round)">
+    <!-- Fond -->
+    <rect x="0" y="0" width="1366" height="171" fill="url(#bg)"/>
+
+    <!-- Cercles décoratifs translucides -->
+    <circle cx="1180" cy="30" r="150" fill="#ffffff" opacity="0.06"/>
+    <circle cx="1290" cy="150" r="110" fill="#ffffff" opacity="0.05"/>
+    <circle cx="1040" cy="150" r="70" fill="#ffffff" opacity="0.05"/>
+
+    <!-- Ligne de pouls cardiaque (ECG) -->
+    <polyline points="720,95 800,95 828,95 846,55 872,128 900,72 918,95 1010,95 1040,95 1058,70 1080,112 1100,95 1366,95"
+      fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.35"/>
+
+    <!-- Badge croix médicale -->
+    <circle cx="98" cy="85" r="52" fill="#ffffff"/>
+    <g fill="#4e9d8f">
+      <rect x="86" y="55" width="24" height="60" rx="6"/>
+      <rect x="68" y="73" width="60" height="24" rx="6"/>
+    </g>
+
+    <!-- Texte -->
+    <text x="188" y="78" font-family="'Poppins','Segoe UI',Arial,sans-serif" font-size="44" font-weight="700" fill="#ffffff">Votre avis nous intéresse</text>
+    <text x="190" y="120" font-family="'Poppins','Segoe UI',Arial,sans-serif" font-size="23" font-weight="400" fill="#ffffff" opacity="0.92">Votre satisfaction est notre priorité</text>
+
+    <!-- Petit cœur -->
+    <path d="M660 74 c0,-11 -17,-16 -23,-4 c-6,-12 -23,-7 -23,4 c0,12 23,26 23,26 c0,0 23,-14 23,-26 z" fill="#ffffff" opacity="0.85"/>
+  </g>
+</svg>

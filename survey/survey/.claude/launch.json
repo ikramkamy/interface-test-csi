@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "survey",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd /Users/mac/Documents/survey && exec /usr/bin/python3 -m http.server 8123 --directory /Users/mac/Documents/survey"],
+      "port": 8123
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+/*============================================================================================*/
+/* Your custom styles below */
+/*============================================================================================*/
+/* Marque GBH */
+.brand_logo {
+	border-radius: 6px;
+}
+.header_social a {
+	display: inline-block;
+	margin-left: 14px;
+	color: #70b2a6;
+	font-size: 22px;
+	line-height: 48px;
+	vertical-align: middle;
+	transition: color .3s ease;
+}
+.header_social a:hover {
+	color: #3d8578;
+	text-decoration: none;
+}
+.modal-backdrop {
+	z-index: 0;
+}
+.modal-content {
+    background: #e8e8e8 url(../img/pattern_3.svg) no-repeat center left;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.modal .form-control {
+    height: 40px;
+    background-color: #f8f9fa;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.125);
+    color: #000;
+
+}
+.modal .btn {
+    height: 40px;
+	padding: 0px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.modal .btn:hover{
+	color: #fff;
+    background-color: #4e9d8f;
+}
+.modal li i:hover{
+    color: #4e9d8f;
+}
+.modal li {
+    background-color: #f8f9fa;
+}
+span.error {
+    color: transparent;
+    background: transparent;
+}
+span.error:after {
+    display: none;
+}
+#qn3_additional_message_label,
+#qn5_additional_message_label,
+#qf2a_additional_message_label,
+#qf13d_additional_message_label {
+    height: 120px;
+}
+.checkbox_radio_container input[type="checkbox"]:checked ~ .wrapper,
+.checkbox_radio_container input[type="radio"]:checked ~ .wrapper {
+    background-color: #4e9d8f;
+    color: #fff;
+}
+.container_numbers input[type="radio"]:checked ~ .radio.neutral,
+.container_numbers input[type="radio"]:hover ~ .radio.neutral {
+    background-color: #a5ca7b;
+    color: white;
+}
+.container_numbers input[type="radio"]:checked ~ .radio.nps_top,
+.container_numbers input[type="radio"]:hover ~ .radio.nps_top {
+    background-color: #a5ca7b;
+    color: white;
+}
+.container_numbers input[type="radio"]:checked ~ .radio.nps_middle,
+.container_numbers input[type="radio"]:hover ~ .radio.nps_middle {
+    background-color: #f9be52;
+    color: white;
+}
+.container_numbers input[type="radio"]:checked ~ .radio.nps_bottom,
+.container_numbers input[type="radio"]:hover ~ .radio.nps_bottom {
+    background-color: #fd7274;
+    color: white;
+}
+.container_smile input[type="radio"]:checked ~ .radio.nps_top,
+.container_smile input[type="radio"]:hover ~ .radio.nps_top {
+    background-color: #a5ca7b;
+    color: white;
+}
+.container_smile input[type="radio"]:checked ~ .radio.nps_middle,
+.container_smile input[type="radio"]:hover ~ .radio.nps_middle {
+    background-color: #f9be52;
+    color: white;
+}
+.container_smile input[type="radio"]:checked ~ .radio.nps_bottom,
+.container_smile input[type="radio"]:hover ~ .radio.nps_bottom {
+    background-color: #fd7274;
+    color: white;
+}
+.container_numbers input[type="radio"].star_checked_nps_middle ~ .radio {
+    background-color: #f9be52;
+    color: white;
+}
+.container_numbers input[type="radio"].star_checked_nps_top ~ .radio {
+    background-color: #a5ca7b;
+    color: white;
+}
+.container_numbers input[type="radio"].star_checked_nps_bottom ~ .radio {
+    background-color: #ff5f7f;
+    color: white;
+}
+@media (max-width: 767px) {
+    .main_title_1 h1, .main_title_1 h3 {
+        font-size: 21px;
+        margin-bottom: 20px;
+    }
+    .main_title_1 p,
+    h3.main_question {
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+    button.backward,
+    button.forward,
+    button.submit {
+        width: 145px;
+        padding: 12px 18px;
+        font-size: 12px;
+    }
+    .container_numbers .radio {
+        font-size: 12px;
+        padding: 5px;
+    }
+    #qn3_additional_message_label,
+    #qn5_additional_message_label,
+    #qf2a_additional_message_label,
+    #qf13d_additional_message_label  {
+        height: 70px;
+    }
+    .checkbox_radio_container .radio, .checkbox_radio_container .checkbox {
+        width : 18px;
+        height: 18px;
+    }
+    .checkbox_radio_container .wrapper {
+        font-size: 12px;
+        padding: 7px 10px 7px 44px;
+    }
+    .checkbox_radio_container .radio:before, .checkbox_radio_container .checkbox:before {
+        content: "";
+        position: absolute;
+        width: 0px;
+        height: 3px;
+        background: #4e9d8f;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        border-radius: 5px;
+        transform: translate(-2px, 2px) rotate(45deg);
+        transform-origin: left;
+        transition: all 150ms;
+        transition-delay: 150ms;
+    }
+    .checkbox_radio_container .radio:after, .checkbox_radio_container .checkbox:after {
+        content: "";
+        position: absolute;
+        width: 0px;
+        height: 3px;
+        background: #4e9d8f;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        border-radius: 5px;
+        transform: translate(1px, 7px) rotate(-45deg);
+        transform-origin: left;
+        transition: all 150ms;
+        transition-delay: 0ms;
+    }
+    em,
+    em small{
+        font-size: 10px;
+        line-height: 0.575em;
+    }
+
+}
